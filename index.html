@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calendario 2026 (Notas + Colores)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div class="left">
+        <div class="title">Calendario 2026</div>
+        <div class="subtitle">Click en un día para nota + color. Se guarda en tu navegador.</div>
+      </div>
+
+      <div class="controls">
+        <button class="btn" id="prevBtn">◀</button>
+
+        <select class="monthPick" id="monthSelect" aria-label="Seleccionar mes"></select>
+
+        <button class="btn" id="nextBtn">▶</button>
+
+        <button class="btn primary" id="todayBtn">Hoy</button>
+        <button class="btn ok" id="exportBtn">Exportar</button>
+
+        <label class="btn" for="importFile" style="cursor:pointer;">
+          Importar
+        </label>
+        <input id="importFile" type="file" accept="application/json" hidden />
+
+        <button class="btn danger" id="resetAllBtn" title="Borra todo el calendario guardado">
+          Reset
+        </button>
+      </div>
+    </header>
+
+    <section class="gridWrap">
+      <div class="dow" id="dowRow"></div>
+      <div class="grid" id="calendarGrid"></div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modalBack" id="modalBack" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modalHeader">
+        <div>
+          <div class="modalTitle" id="modalTitle">Editar día</div>
+          <div class="modalDate" id="modalDate"></div>
+        </div>
+        <button class="btn ghost" id="closeModalBtn" aria-label="Cerrar">✕</button>
+      </div>
+
+      <div class="modalBody">
+        <label class="field">
+          <span>Nota</span>
+          <textarea id="noteInput" rows="5" placeholder="Escribe tu nota o tarea..."></textarea>
+        </label>
+
+        <div class="row">
+          <label class="field">
+            <span>Color (background)</span>
+            <input type="color" id="colorInput" />
+          </label>
+
+          <div class="hint">
+            Tip: usa el puntito como indicador visual (aparece si hay nota).
+          </div>
+        </div>
+      </div>
+
+      <div class="modalFooter">
+        <button class="btn danger" id="clearDayBtn">Limpiar día</button>
+        <div class="spacer"></div>
+        <button class="btn" id="cancelBtn">Cancelar</button>
+        <button class="btn primary" id="saveBtn">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
